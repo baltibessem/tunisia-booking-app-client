@@ -1,38 +1,42 @@
 import React, { useState } from "react";
-import * as logFunc from "./loginFunctions.js";
 import "./logOrsign.css";
 import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import {useHistory } from "react-router-dom"
+import axios from "axios";
+import { login } from "../../utlis/index";
 
 
 
 
 export default function LogOrsign({ history }) {
-  let [userData, setUserData] = useState({});
+  const [loginData, setLoginData] = useState({});
+  
   history= useHistory();
 
   const getToSignUp = (e) => {
     e.preventDefault();
     history.push("/register");
   };
-  const handleChangeEvent = (e, title) => {
-    let value = e.target.value;
-    setUserData({ ...userData, [title]: value });
+
+  const handleChange = (e) => {
+    console.log([e.target.name],":", e.target.value);
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const submitData = (e) => {
-    e.preventDefault();
-    // console.log(userData)
-    logFunc
-      .logUserIn(userData)
-      .then((response) => response.data)
-      .then((data) => {
-        let { token } = data;
-        sessionStorage.setItem("authToken", token);
-        history.push("/routes");
-      });
-  };
 
+const handleSubmit = (e) => {
+  // e.preventDefault()
+  axios
+    .post("http://localhost:5000/api/users/login", loginData)
+    .then((response) => {
+      login(response.data.token);
+      alert("CONNECTÉ AVEC SUCCÈS  ");
+      history.push("/");
+    })
+    .catch((err) => alert(err.response.data.msg));
+
+    
+};
   return (
     <div className="container1">
       <section className="myform-area">
@@ -41,8 +45,8 @@ export default function LogOrsign({ history }) {
             <div className="col-lg-8">
               <div className="form-area login-form">
                 <div className="form-content">
-                  <h2>Login</h2>
-                  <p>you chose the right option</p>
+                  <h2>Connexion</h2>
+                  <p>vous choisissez la bonne option</p>
                   <ul>
                     <li>
                       <a href="/#" className="facebook">
@@ -59,46 +63,43 @@ export default function LogOrsign({ history }) {
                   </ul>
                 </div>
                 <div className="form-input">
-                  <h2>Enter Credentials</h2>
-                  <form
-                    onSubmit={(e) => {
-                      submitData(e);
-                    }}
-                  >
-                    <div class="form-group">
+                  <h2>Entrez les informations d'identification</h2>
+                  <form>
+                    <div className="form-group">
                       <input
                         className="loginInfo"
                         type="email"
-                        name="name"
+                        name="email"
                         required
-                        onChange={(e) => handleChangeEvent(e, "email")}
+                        onChange={handleChange}
                       />
                       <label>Email-Id</label>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         className="loginInfo"
                         type="password"
-                        name="password"
+                        name="motdepasse"
                         required
-                        onChange={(e) => handleChangeEvent(e, "password")}
+                        onChange={handleChange}
                       />
                       <label>password</label>
                     </div>
-                    <div class="myform-button">
-                      <button type="submit" className="myform-btn">
+                    <div className="myform-button">
+                      <button
+                        type="button"
+                        className="myform-btn"
+                        onClick={() => handleSubmit()}
+                      >
                         Login
                       </button>
                     </div>
-                    <div
-                      className="mlewi"
-                      style={{ display: "flex", flexWrap: "wrap" }}
-                    >
+                    <div className="mlewi">
                       <div
                         style={{
                           width: "200px",
                           paddingTop: "25px",
-                          paddingLeft:"80px"
+                          paddingLeft: "80px",
                         }}
                       >
                         <small className="form-text text-muted signup-text">
@@ -106,7 +107,11 @@ export default function LogOrsign({ history }) {
                         </small>
                       </div>
                       <span className="signUPtext">
-                        <a href="/#" onClick={(e) => getToSignUp(e)}>
+                        <a
+                          href="/#"
+                          onClick={(e) => getToSignUp(e)}
+                          style={{ color: "#007bff" }}
+                        >
                           Sign-Up
                         </a>
                       </span>
