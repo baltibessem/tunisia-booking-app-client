@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 
 
 
-
-
 export default function Homepage() {
 
 const history = useHistory();
@@ -58,6 +56,8 @@ const history = useHistory();
             <span>Take a tour!</span>
           </a>
         </div>
+       
+      
       </div>
     );
 }
