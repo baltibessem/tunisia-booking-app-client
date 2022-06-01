@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
   /* background: url("./assets/home1.jpg"); */
+=======
+  background: url("./assets/home1.jpg");
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;

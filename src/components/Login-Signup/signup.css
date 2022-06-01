@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&display=swap');
 .container {
+<<<<<<< HEAD
     background: url("../../assets/home1.jpg");
 
+=======
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
   width: 100vw;
   height: 100vh;
   background-size: cover;

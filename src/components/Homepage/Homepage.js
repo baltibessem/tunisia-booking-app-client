@@ -4,8 +4,11 @@ import { useHistory } from "react-router-dom";
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
 export default function Homepage() {
 
 const history = useHistory();
@@ -16,14 +19,22 @@ const history = useHistory();
     }
 
     return (
+<<<<<<< HEAD
       <div className="containerMain">
+=======
+      <div className="container maint-cnt">
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
         <div className="header-nav">
           <span className="mytext1"> Love Art </span>
         </div>
 
         <div className=""></div>
 
+<<<<<<< HEAD
         <div className="containermain">
+=======
+        <div className="container">
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
           <div className="slogan">
             <h1>
               <span>Le musée est </span>
@@ -58,6 +69,11 @@ const history = useHistory();
             <span>Take a tour!</span>
           </a>
         </div>
+<<<<<<< HEAD
+=======
+       
+      
+>>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
       </div>
     );
 }
