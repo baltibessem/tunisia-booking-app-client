@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom'
 import styled from "styled-components";
 const Info = styled.div`
   width: 100%;
@@ -33,6 +33,7 @@ const Image = styled.img`
   z-index: 2;
   width: 100%;
   height: 100%;
+  border-radius:15px;
 `;
 
 const Icon = styled.div`
@@ -52,15 +53,14 @@ const Icon = styled.div`
 
 const Musee = ({ item }) => {
   return (
-    <Container onClick={() => alert("hi")}>
-      {/* <Circle/> */}
-      <Image src={item.images[0]} />
+  <Link to = {`/details/${item.id}`}><Container>
+      <Image src={item.images[0]}  />
       <Info>
         <Icon>
           <h2>{item.nom}</h2>
         </Icon>
       </Info>
-    </Container>
+    </Container></Link>  
   );
 };
 

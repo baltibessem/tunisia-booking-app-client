@@ -67,7 +67,7 @@ const Footer = () => {
     <Container>
         <Left>
             <Logo>Tunisie Museé <div className=""></div></Logo>
-            <Desc>Tunisie musée est un plateforme en ligne pour les musées nationals basés sur tout le territoire tunisien qui va faciliter pour les visiteurs de consulter et réservez leurs tickets d'accès au musée destiné.</Desc>
+            <Desc>Tunisie musée est un plateforme en ligne pour les musées nationals basés sur tout le territoire tunisien qui va faciliter pour les visiteurs de s'inscrire , s'authentifier puis consulter et réservez leurs tickets d'accès au musée destiné.</Desc>
             <SocialContainer>
                 <SocialIcon color="#385999">
                     <Facebook/>

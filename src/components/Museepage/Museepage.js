@@ -1,26 +1,26 @@
-import React from 'react'
-import  museedata from '../../data'
-import Musee from '../Musee/Musee'
+import React from "react";
+import Musee from "../Musee/Musee";
 
+const Museepage = ({museedata}) => {
+  return (
+    <div>
+     
 
-const Museepage = () => {
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          marginTop: "5%",
+        }}
+      >
+        {museedata.map((item) => {
+          return <Musee item={item} key={item.id} />;
+        })}
+      </div>
+    </div>
+  );
+};
 
-  return ( 
-
-
-    <div style={{display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap",marginTop:"200px"}}>
-
-                {
-                    museedata.map(item=>{
-                    return    <Musee item={item}/>  
-                    })
-
-
-    }
-             
-           </div>
-
-  )
-}
-
-export default Museepage
+export default Museepage;
