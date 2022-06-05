@@ -1,7 +1,22 @@
-import { combineReducers } from "redux";
-import museumsReducer from "./museums"
+// import { combineReducers } from "redux";
+// import { cartReducer } from "./cartReducer";
+// import {
+//   getAllMuseesReducer,
+//   getMuseeByIdReducer,
+//   addMuseeReviewReducer,
+//   deleteMuseeReducer,
+//   addMuseeReducer,
+//   updateMuseeReducer,
+// } from "./museeReducer";
 
+// const rootReducer = combineReducers({
+//   getAllMuseesReducer,
+//   getMuseeByIdReducer,
+//   addMuseeReviewReducer,
+//   deleteMuseeReducer,
+//   addMuseeReducer,
+//   updateMuseeReducer,
+//   cartReducer,
+// });
 
-const rootReducer= combineReducers({museumsReducer  })
-
-export default rootReducer ;
+// export default rootReducer;

@@ -43,23 +43,17 @@ export default function Signup() {
             <div className="form-container">
               <div className="form-container-in"> </div>{" "}
               <div className="row sgnUp ">
-                <div className="col-md-6 right-divider pdding">
+                <div className="col-md-12 right-divider pdding">
                   <h3 className="lead-text mn-txt">
                     REJOIGNEZ-
                     <br /> <br /> <br /> NOUS
-                    <br /> <br /> <br /> <br /> AVEC SOCIAL
+                    
                   </h3>
-                  <div className="icon-soc-fb">
-                    <FaFacebookF />
                   </div>{" "}
-                  <div className="icon-soc-tw">
-                    <FaTwitterSquare />
-                  </div>{" "}
-                </div>{" "}
                 <div className="left-divider">
                   <div className="col-md-6">
-                    <form style={{ width: "200px", height: "500px" }}>
-                      <div style={{ marginLeft: "-25px" }}>
+                    <form style={{ width: "200px", height: "500px",marginLeft: "0px" }}>
+                      <div >
                         <div className="form-group2">
                           <label htmlFor="name"> Nom: </label>{" "}
                           <input
@@ -109,23 +103,14 @@ export default function Signup() {
                           />{" "}
                         </div>{" "}
                       </div>
-                      {/* <div class="form-group2">
-                        <label htmlFor="password"> Confirmer le mot de passe: </label>{" "}
-                        <input
-                          required
-                          id="password"
-                          type="password"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "password")}
-                        />{" "}
-                      </div>{" "} */}
+                     
                       <div class="form-group21">
                         <input
                           required
                           type="button"
-                          value="submit"
+                          value="Confirmer"
                           onClick={handleSubmit}
-                          className="btn-primary btnn form-submit sub-btn sgnUp"
+                          className="myform-btn-signup"
                         />
                       </div>{" "}
                       <div className="mlewi1">
@@ -137,11 +122,11 @@ export default function Signup() {
                           }}
                         >
                           <small className="form-text text-muted link-text">
-                            Already a User ?
+                            Déja inscrit ?
                           </small>{" "}
                         </div>
                         <span className="signuptext">
-                          <Link to="/login">SIGN-IN</Link>;
+                          <Link to="/login">Se connecter</Link>
                         </span>{" "}
                       </div>{" "}
                     </form>{" "}

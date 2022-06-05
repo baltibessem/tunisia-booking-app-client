@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&display=swap');
 .container {
-<<<<<<< HEAD
-    background: url("../../assets/home1.jpg");
-
-=======
->>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
   width: 100vw;
   height: 100vh;
-  background-size: cover;
+  background-size: cover !important;
+  background: url("https://lp-cms-production.imgix.net/image_browser/El-Jem-roman-ruins-tunisia.jpg");
 }
 
 .form-container-in {
@@ -54,18 +50,15 @@ p.lead {
 }
 
 .right-divider {
-  background: rgba(103, 58, 183, 0.7);
+  background: #cb896a;
   padding-top: 30px;
-  padding-left: 10px;
-
 }
 
 .left-divider {
   border-left: solid 1px rgb(3, 4, 5);
-  width: 65%;
+  width: 80%;
   background: white;
   padding-top: 30px;
-  padding-left: 20px;
 }
 
 .lead-text {
@@ -88,21 +81,21 @@ p.lead {
   text-align: center;
   overflow: hidden;
 }
-
-.btnn {
-  width: 100%;
-  clear: both;
-  white-space: nowrap;
-  font-size: 0.8em;
-  display: block;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.35);
-  margin: 2px;
+.myform-btn-signup{
+  width: 200px;
+  margin-top :60px;
+  height: 50px;
+  font-size: 17px;
+  background: #cb896a;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
   -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-  overflow: hidden;
-}
+  -o-transition: all 0.5s;
+  transition: all 0.5s;}
+
 
 .btnn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.45);
@@ -259,36 +252,16 @@ input.form-submit {
 }
 
 .signuptext {
-  color: green;
   position: relative;
   left: 100%;
-  top: -27px;
+  top: -20px;
   padding-right: 10px;
   cursor: pointer;
 }
 
-.signuptext:hover {
-  color: rgb(71, 158, 71);
-}
 
-.sub-btn {
-   width: 100%;
-    height: 50px;
-    font-size: 17px;
-    background: rgba(103, 58, 183);
-    border: none;
-    border-radius: 50px;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
-}
 
-.sub-btn:hover {
-  background: #07315b;
-}
+
 
 .female-radio {
   padding-left: 20px;
@@ -301,13 +274,8 @@ input.form-submit {
   padding-left: 0;
 }
 .mlewi1{
-    padding-top: 10px;
-display: flex;
-flex-wrap: wrap;
-flex-direction: column-reverse;
 height: 80px;
-padding-left: -100px;
-width: 132px;
+width: 200px;
 }
 .form-controlsgnUp{
   background: #FFFFFF;

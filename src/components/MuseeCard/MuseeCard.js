@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import styled from "styled-components";
+
 const Info = styled.div`
   width: 100%;
   height: 100%;
@@ -23,7 +24,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 230px;
+  height: 100%;
   position: relative;
   &:hover ${Info} {
     opacity: 1;
@@ -32,8 +33,8 @@ const Container = styled.div`
 const Image = styled.img`
   z-index: 2;
   width: 100%;
-  height: 100%;
-  border-radius:15px;
+  height:300px;
+  border-radius:10px;
 `;
 
 const Icon = styled.div`
@@ -51,10 +52,10 @@ const Icon = styled.div`
   }
 `;
 
-const Musee = ({ item }) => {
+const MuseeCard = ({ item }) => {
   return (
-  <Link to = {`/details/${item.id}`}><Container>
-      <Image src={item.images[0]}  />
+  <Link to = {`/museesdetails/${item.id}`}><Container>
+      <Image src={item.image}  />
       <Info>
         <Icon>
           <h2>{item.nom}</h2>
@@ -64,4 +65,4 @@ const Musee = ({ item }) => {
   );
 };
 
-export default Musee;
+export default MuseeCard;

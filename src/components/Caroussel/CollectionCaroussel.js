@@ -15,7 +15,7 @@ const Carrousel = ({ musee }) => {
     >
       <div>
         <img
-          src={require("../../assets/col1.png")}
+          src={musee.collectionImage}
           width="500px;"
           border-radius="5px;"
           height="150px"

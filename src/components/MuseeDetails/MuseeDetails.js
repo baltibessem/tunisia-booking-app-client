@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Add, Remove } from "@material-ui/icons";
 import { useParams } from "react-router-dom";
 import Carrousel from "../Caroussel/Caroussel";
 import CollectionCaroussel from "../Caroussel/CollectionCaroussel";
 import Reviews from "../Reviews/Reviews";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { addToCart } from "../../redux/actions/cartActions";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 
 const Container = styled.div`
   background: white;
@@ -28,7 +33,7 @@ const Desc = styled.p`
 `;
 const Price = styled.span`
   font-weight: 100;
-  font-size: 40px;
+  font-size: 30px;
 `;
 
 const CollectionContainer = styled.div`
@@ -38,12 +43,14 @@ const CollectionContainer = styled.div`
 `;
 
 const CollectionTitle = styled.h2`
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 100;
+  margin-top: 15px;
 `;
 
 const ImageCollectionContainer = styled.div`
   flex: 2;
+  margin-top: 15px;
 `;
 
 const AmountContainer = styled.div`
@@ -60,31 +67,35 @@ const Amount = styled.span`
   align-items: center;
   justify-content: center;
   margin: 0px 5px;
-  border: 1px solid teal;
+  border: 1px solid #cb896a;
 `;
-
-const InfoCollectionContainer = styled.div`
-  flex: 1;
-`;
-
 const AddContainer = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  width: 50%;
+  margin-top: 30px;
   justify-content: space-between;
 `;
+
+const ReviewsContainer = styled.div`
+  margin-top: 10px;
+`;
+
 const Button = styled.button`
   padding: 15px;
-  border: 2px solid teal;
-  font-weight: 500;
+  border: 2px solid #cb896a;
+  font-weight: 300;
+  width: 150px;
   background-color: white;
   cursor: pointer;
   &:hover {
-    background-color: teal;
+    background-color: #cb896a;
   }
 `;
 
 const MuseeDetails = ({ museedata }) => {
+  const history = useHistory();
+
   const [musee, setMusee] = useState({});
   let { id } = useParams();
 
@@ -92,35 +103,62 @@ const MuseeDetails = ({ museedata }) => {
     setMusee(museedata.find((musee) => musee.id === +id));
   }, [id]);
 
+  const dispatch = useDispatch();
+
   return (
-    <Container>
-      <Wrapper>
-        <Carrousel musee={musee} />
-
-        <InfoContainer>
-          <Title>{musee.nom}</Title>
-          <Desc>{musee.description}</Desc>
-          <CollectionTitle>COLLECTIONS</CollectionTitle>
-
+    <div>
+      {" "}
+      <Navbar />
+      <Container>
+        <Wrapper>
           <CollectionContainer>
+            <Carrousel musee={musee} />
+            <CollectionTitle>COLLECTIONS</CollectionTitle>
             <ImageCollectionContainer>
               <CollectionCaroussel musee={musee} />
             </ImageCollectionContainer>
           </CollectionContainer>
+          <InfoContainer>
+            <Title>{musee.nom}</Title>
+            <Desc>{musee.description}</Desc>
+            <ReviewsContainer>
+              <Reviews />
+            </ReviewsContainer>
+            <AddContainer>
+              <CollectionTitle>Ticket :</CollectionTitle>
 
-          <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
-            <Price>{musee.prix}</Price>
-            <Button>Réserver ticket</Button>
-          </AddContainer>
-        </InfoContainer>
-        <Reviews/>
-      </Wrapper>
-    </Container>
+              <Price>{musee.prix} TND</Price>
+              <Button onClick={() => {dispatch(addToCart(musee))
+  history.push("/cart");
+}}>
+                Réserver ticket
+              </Button>
+            </AddContainer>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Desc>
+                <CollectionTitle>Horraires</CollectionTitle>
+                Du 01/06 au 15/09 : De 9:00 à 17:00 <br />
+                Du 16/09 au 30/05 : De 9:30 à 16:30 <br />
+                <br />
+                <b>Musée fermé le lundi</b>
+              </Desc>
+              <iframe
+                width="150"
+                height="180"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=MUS%C3%89E%20DE%20BARDO&t=&z=19&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                style={{ marginTop: "15px", marginLeft: "150px" }}
+                marginheight="0"
+                marginwidth="0"
+              ></iframe>
+            </div>
+          </InfoContainer>
+        </Wrapper>
+      </Container>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import store from './redux/store';
-import {Provider} from "react-redux";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
-=======
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -17,23 +8,12 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 // import "bootstrap/dist/css/bootstrap.min.css";
->>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-<<<<<<< HEAD
-
-    <Provider store={store}>
-
-    <App />
-    
-    </Provider>
-
-=======
   <Provider store={store}>
       <App />
   </Provider>
->>>>>>> ea1929e3440e10343e0d475f1653bb92a245589a
 );
 
 // If you want to start measuring performance in your app, pass a function

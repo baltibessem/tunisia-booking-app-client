@@ -1,10 +1,12 @@
 import React from "react";
-import Musee from "../Musee/Musee";
+import MuseeCard from "../MuseeCard/MuseeCard";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
-const Museepage = ({museedata}) => {
+const Museepage = ({ museedata }) => {
   return (
     <div>
-     
+      <Navbar />
 
       <div
         style={{
@@ -12,13 +14,14 @@ const Museepage = ({museedata}) => {
           alignItems: "center",
           justifyContent: "center",
           flexWrap: "wrap",
-          marginTop: "5%",
+          marginTop: "3%",
         }}
       >
         {museedata.map((item) => {
-          return <Musee item={item} key={item.id} />;
+          return <MuseeCard item={item} key={item.id} />;
         })}
       </div>
+        <Footer/>
     </div>
   );
 };

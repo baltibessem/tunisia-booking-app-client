@@ -1,24 +1,25 @@
-// export const addToCart=(pizza,quantity,varient)=>(dispatch,getState)=>{
+export const addToCart = (item) => (dispatch, getState) => {
+  console.log("inside action", item);
 
-//     var cartItem  = {
+  var cartItem = {
+    nom: item.nom,
+    id: item.id,
+    image: item.image,
+    prix: item.prix,
+  };
 
-//             name : pizza.name,
-//             _id : pizza._id,
-//             image : pizza.image ,
-//             varient : varient ,
-//             quantity : Number(quantity) ,
-//             prices : pizza.prices,
-//             price : pizza.prices[0][varient]*quantity
+  dispatch({ type: "ADD_TO_CART", payload: cartItem });
 
-//     }
-//     if(cartItem.quantity>10 )
-//     {alert("You cannot add more than 10 quantities")}
-// else{
-//     if(cartItem.quantity<1){
-//         dispatch({type:'DELETE_FROM_CART', payload:pizza})
-//          }
-//     else{dispatch({type : 'ADD_TO_CART', payload : cartItem})}
-// const cartItems = getState().cartReducer.cartItems
-// localStorage.setItem('cartItems' , JSON.stringify(cartItems))}
+  localStorage.setItem(
+    "cartItems",
+    JSON.stringify(getState().cartReducer.cartItems)
+  );
+};
 
-// }
+export const deleteFromCart = (item) => (dispatch, getState) => {
+  dispatch({ type: "DELETE_FROM_CART", payload: item });
+  localStorage.setItem(
+    "cartItems",
+    JSON.stringify(getState().cartReducer.cartItems)
+  );
+};

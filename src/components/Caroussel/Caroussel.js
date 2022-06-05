@@ -15,7 +15,7 @@ const Carrousel = ({ musee }) => {
     >
       <div>
         <img
-        src={require("../../assets/img1.jpg")}
+        src={"../../assets/img1.jpg"}
         width= "80%;"
         border-radius= "5px;"
         height="450px"
@@ -24,7 +24,7 @@ const Carrousel = ({ musee }) => {
         {/* <p className="legend">Legend 1</p> */}
       </div>
       <div>
-        <img
+        <imgre
           src={require("../../assets/img2.jpg")}
           width="80%;"
           height="450px"

@@ -3,33 +3,21 @@ form {
   margin: 0 auto;
 }
 
-/* h1 {
-  font-weight: 100;
-  color: white;
-  text-align: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgb(79, 98, 148);
-} */
+
 
 .form {
-  background: #0e101c;
+  background: white;
   max-width: 400px;
   margin: 0 auto;
 }
 
-/* p {
-  color: #bf1650;
-} */
 
-/* p::before {
-  display: inline;
-  content: "⚠ ";
-} */
-
-.contactput, #message {
+.contactput,
+#message {
   display: block;
   box-sizing: border-box;
   width: 100%;
+  color: #cb896a;
   border-radius: 4px;
   border: 1px solid white;
   padding: 10px 15px;
@@ -47,21 +35,9 @@ form {
   font-weight: 200;
 }
 
-.contactbut {
-  background: #1a1819;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
-  width: 600px;
-}
+
 .contactbut:hover {
-  background: #efedee;
-  color:black
+  background: #cb896a;
 }
 
 .contactbut:active {
@@ -83,12 +59,6 @@ input:disabled {
   -webkit-appearance: none;
 }
 
-.aps {
-    background: rgba(0, 0, 0, 0);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 .contactbut {
   display: block;
   appearance: none;
@@ -108,21 +78,32 @@ hr {
   margin-top: 30px;
 }
 
-button {
-  display: block;
-  appearance: none;
-  margin-top: 40px;
-  border: 1px solid #333;
+.contactbut {
+  background-color: #cb896a;
+  border: none;
+  margin-top: 20px;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 5px;
+  width: 500px;
 }
-.contwal{
+.contwal {
+  background: white;
+  
+}
 
-     background: url("../../assets/cont.jpg");
-
-  width: 100vw;
-  height: 655px;
-  background-size: cover;
+.aps {
+  max-width: 600px;
+  box-shadow:  5px 10px 0.5em 0.5em grey;
+  background-color: #302e2f;
+  padding:0px 20px;
+  border-radius: 10px;
+}
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
 }
