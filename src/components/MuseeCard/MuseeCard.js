@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Info = styled.div`
@@ -33,8 +33,8 @@ const Container = styled.div`
 const Image = styled.img`
   z-index: 2;
   width: 100%;
-  height:300px;
-  border-radius:10px;
+  height: 300px;
+  border-radius: 10px;
 `;
 
 const Icon = styled.div`
@@ -54,14 +54,18 @@ const Icon = styled.div`
 
 const MuseeCard = ({ item }) => {
   return (
-  <Link to = {`/museesdetails/${item.id}`}><Container>
-      <Image src={item.image}  />
-      <Info>
-        <Icon>
-          <h2>{item.nom}</h2>
-        </Icon>
-      </Info>
-    </Container></Link>  
+    <div>
+      <Link to={`/museesdetails/${item._id}`}>
+        <Container>
+          <Image src={item.image1} />
+          <Info>
+            <Icon>
+              <h2>{item.nom}</h2>
+            </Icon>
+          </Info>
+        </Container>
+      </Link>
+    </div>
   );
 };
 

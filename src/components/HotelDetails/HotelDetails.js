@@ -3,6 +3,17 @@ import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getAllHotels } from "../../redux/actions/hotelActions";
+import Loading from "../Loading/Loading";
+import ReviewHotel from "../ReviewHotel/ReviewHotel";
+import {
+  MailOutline,
+  Phone,
+  Room,
+} from "@material-ui/icons";
+import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser';
 const Container = styled.div`
   background: white;
 `;
@@ -14,6 +25,7 @@ const Wrapper = styled.div`
 
 const InfoContainer = styled.div`
   padding: 0px 50px;
+  flex-direction: row;
   flex: 1;
 `;
 
@@ -24,17 +36,14 @@ const Desc = styled.p`
   margin: 20px 0px;
 `;
 
-
 const CollectionContainer = styled.div`
-  margin: -21px 235px 0px 1px
   display: flex;
-  margin-bottom:50px;
+  margin-bottom: 50px;
 `;
 
 const CollectionTitle = styled.h2`
   font-size: 30px;
   font-weight: 100;
-  margin-top: 15%;
 `;
 
 const ImageCollectionContainer = styled.div`
@@ -42,80 +51,80 @@ const ImageCollectionContainer = styled.div`
   margin-top: 15px;
 `;
 
-
-
-
-const Button = styled.button`
-  padding: 15px;
-  border: 2px solid #cb896a;
-  font-weight: 300;
-  width: 150px;
-  background-color: white;
-  cursor: pointer;
-  &:hover {
-    background-color: #cb896a;
-  }
+const ContactItem = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 `;
 
-const HotelDetails = ({ hoteldata }) => {
-  const [hotel, setHotel] = useState({});
+const ReviewsContainer = styled.div`
+  margin-top: 10px;
+`;
+
+const HotelDetails = () => {
   let { id } = useParams();
+  const { hotels } = useSelector((state) => state.getAllHotelsReducer);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
-      console.log(hoteldata)
-    setHotel(hoteldata.find((hotel) => hotel.id === +id));
-    console.log(hotel)
-  }, [id]);
+    dispatch(getAllHotels());
+  }, []);
 
+  useEffect(() => {
+    hotels.length !== 0 ? setLoading(false) : setLoading(true);
+  }, [hotels]);
+
+  var hotel = hotels && hotels.find((el) => el._id == id);
   return (
     <div>
       {" "}
       <Navbar />
-      <Container>
-        <Wrapper>
-          <CollectionContainer>
-            
-            <Title>{hotel.nom}</Title>
-            <ImageCollectionContainer>
-                <img src={hotel.image}
-                style={{height:"500px",width:"800px",borderRadius:"10px"}}/>
-            </ImageCollectionContainer>
-          </CollectionContainer>
-          <InfoContainer>
-          <CollectionTitle>Contact :</CollectionTitle>
-            <Desc>{hotel.email}</Desc>
-            <CollectionTitle>Site web :</CollectionTitle>
-            <a href={hotel.website}><Desc>{hotel.website}</Desc></a>
-            <CollectionTitle>Phone :</CollectionTitle>
-            <Desc>{hotel.phone}</Desc>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container>
+          <Wrapper>
+            <CollectionContainer>
+              <ImageCollectionContainer>
+                <img
+                  src={hotel.image}
+                  style={{
+                    height: "500px",
+                    width: "800px",
+                    borderRadius: "10px",
+                  }}
+                />
+              </ImageCollectionContainer>
+            </CollectionContainer>
+            <InfoContainer>
+              <Title>{hotel && hotel.nom}</Title>
 
-            {/* <ReviewsContainer>
-              <Reviews />
-            </ReviewsContainer>
-            
-          <div style={{display:"flex",justifyContent:"space-between"}} >
+              <ContactItem>
+                <Room/><Desc>{hotel && hotel.adresse} </Desc>
+              </ContactItem>
 
-            <Desc>
-            <CollectionTitle>Horraires</CollectionTitle>
-              Du 01/06 au 15/09 : De 9:00 à 17:00 <br />
-              Du 16/09 au 30/05 : De 9:30 à 16:30 <br/><br/>
-             <b>Musée fermé le lundi</b> 
-            </Desc>
-            <iframe
-              width="150"
-              height="180"
-              id="gmap_canvas"
-              src="https://maps.google.com/maps?q=MUS%C3%89E%20DE%20BARDO&t=&z=19&ie=UTF8&iwloc=&output=embed"
-              frameborder="0"
-              scrolling="no"
-              style={{ marginTop: "15px" ,marginLeft:"150px"}}
-              marginheight="0"
-              marginwidth="0"
-            ></iframe>
-            </div> */}
-          </InfoContainer>
-        </Wrapper>
-      </Container>
+              <ContactItem>
+                <MailOutline/><Desc>{hotel && hotel.email} </Desc>
+              </ContactItem>
+
+              <ContactItem>
+                <Phone/><Desc>{hotel && hotel.phone} </Desc>
+              </ContactItem>
+                  
+              <ContactItem>
+                <OpenInBrowserIcon/><Desc> <a href={hotel.siteweb}>{hotel && hotel.siteweb} </a></Desc>
+              </ContactItem>
+
+            
+              <ReviewsContainer>
+                <ReviewHotel hotel={hotel} />
+              </ReviewsContainer>
+            </InfoContainer>
+          </Wrapper>
+        </Container>
+      )}
       <Footer />
     </div>
   );

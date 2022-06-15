@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "tunisia-booking-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,6 +18,7 @@
     "flat-carousel": "^0.0.1",
     "history": "^5.3.0",
     "jquery": "^3.6.0",
+    "jwt-decode": "^3.1.2",
     "mdbreact": "^5.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -59,5 +60,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

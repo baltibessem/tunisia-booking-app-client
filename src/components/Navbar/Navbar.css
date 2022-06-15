@@ -11,7 +11,7 @@ i {
   margin-right: 10px;
 }
 .navbar-logo {
-  padding: 15px;
+
   color: #fff;
   pointer-events: none;
 }
@@ -155,13 +155,6 @@ i {
   border: solid 1px #ccc;
   border-radius: 10px;
 }
-.logout {
-  padding-left: 30px;
-}
-
-/*
-* 3. header styles
-*/
 body {
   overflow-x: hidden;
 }
@@ -230,10 +223,9 @@ body {
 }
 
 .header-navigation ul.navigation-box {
-  margin: 0;
+  margin-left: 29%;
   padding: 0;
   list-style: none;
-  transform: translateX(700px);
 }
 .header-navigation ul.navigation-box li a .sub-nav-toggler {
   display: none;

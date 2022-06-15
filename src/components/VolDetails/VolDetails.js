@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 const Container = styled.div`
@@ -42,22 +42,7 @@ const ImageCollectionContainer = styled.div`
   margin-top: 15px;
 `;
 
-
-
-
-const Button = styled.button`
-  padding: 15px;
-  border: 2px solid #cb896a;
-  font-weight: 300;
-  width: 150px;
-  background-color: white;
-  cursor: pointer;
-  &:hover {
-    background-color: #cb896a;
-  }
-`;
-
-const HotelDetails = ({ voldata }) => {
+const VolDetails = ({ voldata }) => {
   const [vol, setVol] = useState({});
   let { id } = useParams();
 
@@ -121,4 +106,4 @@ const HotelDetails = ({ voldata }) => {
   );
 };
 
-export default HotelDetails;
+export default VolDetails;

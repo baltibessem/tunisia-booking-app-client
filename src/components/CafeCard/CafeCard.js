@@ -52,9 +52,9 @@ const Icon = styled.div`
   }
 `;
 
-const HotelCard = ({ item }) => {
+const CafeCard = ({ item }) => {
   return (
-    <Link to={`/hotelsdetails/${item._id}`}>
+    <Link to={`/cafedetails/${item._id}`}>
       <Container>
         <Image src={item.image} />
         <Info>
@@ -67,4 +67,4 @@ const HotelCard = ({ item }) => {
   );
 };
 
-export default HotelCard;
+export default CafeCard;

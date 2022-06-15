@@ -15,33 +15,33 @@ const Carrousel = ({ musee }) => {
     >
       <div>
         <img
-          src={musee.collectionImage}
+          src={musee.collectionImage1}
           width="500px;"
           border-radius="5px;"
           height="150px"
           object-fit="cover;"
         />
-        <p>Céramiques découvertes dans les nécropoles puniques.</p>
+        <p>{musee.collectionDescription1}</p>
       </div>
       <div>
         <img
-          src={require("../../assets/col2.jpg")}
+          src={musee.collectionImage2}
           width="500px;"
           height="150px"
           border-radius="25px;"
           object-fit="cover;"
         />
-        <p >Sarcophages du prêtre et de la prêtresse.</p>
+        <p >{musee.collectionDescription2}</p>
       </div>
       <div>
         <img
-          src={require("../../assets/col3.jpg")}
+          src={musee.collectionImage3}
           width="500px;"
           border-radius="5px;"
           height="150px"
           object-fit="cover;"
         />
-        <p>Rasoirs de bronze ornés.</p>
+        <p>{musee.collectionDescription3}</p>
       </div>
     </Carousel>
   );

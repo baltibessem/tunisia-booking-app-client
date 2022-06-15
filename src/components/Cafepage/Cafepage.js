@@ -1,23 +1,22 @@
-import React , {useEffect} from "react";
-import MuseeCard from "../MuseeCard/MuseeCard";
-import Navbar from "../Navbar/Navbar";
+import CafeCard from "../CafeCard/CafeCard";
 import Footer from "../Footer/Footer";
-import { getAllMusees } from "../../redux/actions/museeActions";
+import Navbar from "../Navbar/Navbar";
+import React, { useEffect } from "react";
+import { getAllCafes } from "../../redux/actions/cafeActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 
-const Museepage = () => {
+const Cafepage = () => {
   const dispatch = useDispatch();
-  const museesState = useSelector((state) => state.getAllMuseesReducer);
-  const { musees, error, loading } = museesState;
+  const cafesState = useSelector((state) => state.getAllCafesReducer);
+  const { cafes, error, loading } = cafesState;
   useEffect(() => {
-    dispatch(getAllMusees());
+    dispatch(getAllCafes());
   }, []);
   return (
     <div>
       <Navbar />
-
       <div
         style={{
           display: "flex",
@@ -32,8 +31,8 @@ const Museepage = () => {
         ) : error ? (
           <Error error={console.log(error)} />
         ) : (
-          musees.map((item) => {
-            return <MuseeCard item={item} key={item._id} />;
+          cafes.map((item) => {
+            return <CafeCard item={item} key={item._id} />;
           })
         )}
       </div>
@@ -42,4 +41,4 @@ const Museepage = () => {
   );
 };
 
-export default Museepage;
+export default Cafepage;

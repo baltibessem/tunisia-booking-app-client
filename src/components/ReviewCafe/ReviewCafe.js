@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addMuseeReview } from "../../redux/actions/museeActions";
+import { addCafeReviewc } from "../../redux/actions/cafeActions";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
-const Reviews = ({ museeDetails }) => {
+const ReviewCafe = ({ cafe }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -18,17 +18,14 @@ const Reviews = ({ museeDetails }) => {
   function sendreview() {
     if (token) {
       const currentUser = jwt_decode(token);
-     {
+
+      {
         const review = {
           rating: rating,
           comment: comment,
-          
         };
 
-        console.log(museeDetails,'aaa musee')
-        
-
-        dispatch(addMuseeReview(review, museeDetails._id, currentUser));
+        dispatch(addCafeReviewc(review, cafe._id, currentUser));
         alert("Votre AVIS est publié avec succès");
       }
     }
@@ -37,9 +34,6 @@ const Reviews = ({ museeDetails }) => {
   const handleChange = (e) => {
     setComment(e.target.value);
   };
- 
-
-  const Textarea = styled.textarea``;
 
   const Button = styled.button`
     padding: 15px;
@@ -55,8 +49,7 @@ const Reviews = ({ museeDetails }) => {
 
   return (
     <div>
-
-<h3 style={{transform: "translateY(43px)"}}>Donner un avis</h3>
+      <h3 style={{ transform: "translateY(43px)" }}>Donner un avis</h3>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <ReactStars
           count={5}
@@ -70,16 +63,20 @@ const Reviews = ({ museeDetails }) => {
           }}
         />
       </div>
-    
-      <input placeholder='Tapez Votre Commentaire Ici' onChange={handleChange} style={{height:"100px",width:"180px"}}></input>
+
+      <input
+        onChange={handleChange}
+        placeholder="Tapez Votre Commentaire Ici"
+        style={{ height: "100px", width: "180px" }}
+      ></input>
       <Button onClick={sendreview} style={{ transform: "translateX(233px)" }}>
         Publier avis
       </Button>
 
       <h5 className="titlerev">Dernier Avis</h5>
-      {museeDetails.reviews &&
-        museeDetails.reviews.map((review) => {
-          console.log(review,'revvvv')
+      {cafe.reviews &&
+        cafe.reviews.map((review) => {
+          console.log(review, "revvvv");
 
           return (
             <div>
@@ -103,4 +100,4 @@ const Reviews = ({ museeDetails }) => {
   );
 };
 
-export default Reviews;
+export default ReviewCafe;
